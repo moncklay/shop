@@ -1,26 +1,12 @@
-require_relative 'product'
-require_relative 'film'
-require_relative 'book'
+require_relative 'lib/product'
+require_relative 'lib/film'
+require_relative 'lib/book'
+require_relative 'lib/product_collection'
 
-products = []
+collection = ProductCollection.from_dir(File.dirname(__FILE__) + '/data')
 
-products << Film.new(
-  title: 'Леон', year: '1994', producer: 'Люк Бессон', price: 990, quantity: 5
-)
+collection.sort!(by: :price, order: :asc)
 
-products << Film.new(
-  title: 'Дурак', year: '2014', producer: 'Юрий Быков', price: 390, quantity: 1
-)
-
-products << Book.new(
-  title: 'Идиот',
-  genre: 'роман',
-  author: 'Федор Достоевский',
-  price: 1500,
-  quantity: 10
-)
-
-# Выводим все продукты в консоль просто передавая их методу puts
-puts 'Вот какие товары у нас есть:'
-puts
-products.each { |product| puts product }
+collection.to_a.each do |product|
+  puts product
+end
