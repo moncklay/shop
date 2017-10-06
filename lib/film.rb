@@ -8,8 +8,8 @@ class Film < Product
       title: lines[0],
       producer: lines[1],
       year: lines[2],
-      price: lines[3],
-      quantity: lines[4]
+      price: lines[3].to_i,
+      quantity: lines[4].to_i
     )
   end
 

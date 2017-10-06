@@ -18,4 +18,8 @@ class Product
     @price = params[:price] if params[:price]
     @quantity = params[:quantity] if params[:quantity]
   end
+
+  def buy
+    @quantity -= 1
+  end
 end
